@@ -11,3 +11,13 @@ for (let i = 0; i < 16; i++) {
     }
     canvas.appendChild(row);
 }
+
+const cells = document.querySelectorAll('.cell');
+cells.forEach(cell => {
+    cell.addEventListener('mouseover', fill);
+});
+
+function fill(event) {
+    const element = event.target;
+    element.style.backgroundColor = 'red';
+}
