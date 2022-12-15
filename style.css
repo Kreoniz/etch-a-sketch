@@ -1,0 +1,14 @@
+.canvas {
+    max-width: 500px;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid black;
+}
