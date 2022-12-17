@@ -2,11 +2,16 @@ const canvasWidth = 500;
 
 const colorPicker = document.querySelector('#colorPicker');
 let pickedColor = colorPicker.value;
+let rainbowMode = false;
 colorPicker.addEventListener('change', changePickedColor);
 
 function changePickedColor(event) {
     pickedColor = event.target.value;
+    rainbowMode = false;
 }
+
+const rainbowModeButton = document.querySelector('#rainbowMode');
+rainbowModeButton.addEventListener('click', () => rainbowMode = true);
 
 function createGrid(gridWidth) {
     const canvas = document.querySelector('#canvas');
@@ -33,9 +38,23 @@ function createGrid(gridWidth) {
     });
 }
 
+function getRandomColor() {
+    let color = '#';
+    for (let i = 0; i < 3; i++) {
+        const randInt = Math.round(Math.random() * 255);
+        const hexString = randInt.toString(16).padStart(2, '0');
+        color += hexString;
+    }
+    return color;
+}
+
 function fillCell(event) {
     const element = event.target;
-    element.style.backgroundColor = pickedColor;
+    if (rainbowMode) {
+        element.style.backgroundColor = getRandomColor();
+    } else {
+        element.style.backgroundColor = pickedColor;
+    }
 }
 
 createGrid(16);
