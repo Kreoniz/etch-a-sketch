@@ -1,8 +1,16 @@
 const canvasWidth = 500;
 
+const colorPicker = document.querySelector('#colorPicker');
+let pickedColor = colorPicker.value;
+colorPicker.addEventListener('change', changePickedColor);
+
+function changePickedColor(event) {
+    pickedColor = event.target.value;
+}
+
 function createGrid(gridWidth) {
     const canvas = document.querySelector('#canvas');
-    canvas.innerHTML = "";
+    canvas.innerHTML = '';
 
     for (let i = 0; i < gridWidth; i++) {
         const row = document.createElement('div');
@@ -21,13 +29,13 @@ function createGrid(gridWidth) {
 
     const cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
-        cell.addEventListener('mouseover', fill);
+        cell.addEventListener('mouseover', fillCell);
     });
 }
 
-function fill(event) {
+function fillCell(event) {
     const element = event.target;
-    element.style.backgroundColor = 'red';
+    element.style.backgroundColor = pickedColor;
 }
 
 createGrid(16);
