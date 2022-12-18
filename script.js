@@ -1,4 +1,6 @@
 const canvasWidth = 500;
+const buttonsBlock = document.querySelector('.buttons');
+buttonsBlock.style.width = `${canvasWidth}px`;
 
 const colorPicker = document.querySelector('#colorPicker');
 let pickedColor = colorPicker.value;
