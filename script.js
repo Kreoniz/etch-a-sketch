@@ -35,6 +35,7 @@ function createGrid(gridWidth) {
     const cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
         cell.addEventListener('mouseover', fillCell);
+        cell.addEventListener('mousedown', fillCell);
     });
 }
 
@@ -49,11 +50,14 @@ function getRandomColor() {
 }
 
 function fillCell(event) {
-    const element = event.target;
-    if (rainbowMode) {
-        element.style.backgroundColor = getRandomColor();
-    } else {
-        element.style.backgroundColor = pickedColor;
+    event.preventDefault();
+    if (event.buttons == 1) {
+        const element = event.target;
+        if (rainbowMode) {
+            element.style.backgroundColor = getRandomColor();
+        } else {
+            element.style.backgroundColor = pickedColor;
+        }
     }
 }
 
